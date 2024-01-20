@@ -1,0 +1,24 @@
+{% extends "gsorcerer/layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+<!-- Title -->
+<div class="row">
+    <div class="col-12">
+        <h1 class="text-center">Welcome to Gsorcerer</h1>
+    </div>
+    {% for contributer in contributers %}
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ contributer.logo_url }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{contributer.name}}</h5>
+          <p class="card-text">{{contributer.source_code}}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
