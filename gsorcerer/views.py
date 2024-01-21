@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .helpers import get_organizations_info
+from .models import Organization, Categories, TechnologyTags, TopicTags
+from datetime import datetime
 # Create your views here.
 
 # name
@@ -20,8 +22,8 @@ from .helpers import get_organizations_info
 # social_comm_methods
 
 def index(request):
-    organizations = get_organizations_info(year=2023,filter='github')
-
+    organizations = Organization.objects.all()    
+                
     # print(contributers)
     return render(request, 'gsorcerer/index.html', {
         'organizations': organizations
