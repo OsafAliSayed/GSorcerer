@@ -1,11 +1,14 @@
 import requests
 import re
 def github_re_filter(organization):
-  expressions = [r'^https://github.com/[a-zA-Z0-9]*$']
+  expressions = [r'https://github.com/[a-zA-Z0-9]*']
   for exp in expressions:
     regex = re.compile(exp)
     result = regex.search(organization)
+    if result:
+      return result.group(0)
   return False
+
 def get_organizations_info(year, filter=None):
   url = f'https://summerofcode.withgoogle.com/api/program/{year}/organizations/'
 
@@ -31,7 +34,9 @@ def get_organizations_info(year, filter=None):
   else:
     data = []
     for organization in organizations:
-      if filter in organization["source_code"] and github_re_filter(organization["source_code"]):
-        data.append(organization)
+      if filter in organization["source_code"]:
+        if github_re_filter(organization["source_code"]) != False:
+          organization["source_code"] = github_re_filter(organization["source_code"])
+          data.append(organization)
     return data
       
