@@ -1,6 +1,12 @@
 import requests
-
-def get_organizations_info(year):
+import re
+def github_re_filter(organization):
+  expressions = [r'^https://github.com/[a-zA-Z0-9]*$']
+  for exp in expressions:
+    regex = re.compile(exp)
+    result = regex.search(organization)
+  return False
+def get_organizations_info(year, filter=None):
   url = f'https://summerofcode.withgoogle.com/api/program/{year}/organizations/'
 
   payload = {}
@@ -18,5 +24,14 @@ def get_organizations_info(year):
     'sec-fetch-site': 'same-origin',
     'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36 Edg/120.0.0.0'
   }
-  organizations = requests.request("GET", url, headers=headers, data=payload)
-  return organizations
+  organizations = requests.request("GET", url, headers=headers, data=payload).json()
+  
+  if not filter:
+    return organizations
+  else:
+    data = []
+    for organization in organizations:
+      if filter in organization["source_code"] and github_re_filter(organization["source_code"]):
+        data.append(organization)
+    return data
+      
