@@ -20,10 +20,9 @@ from .helpers import get_organizations_info
 # social_comm_methods
 
 def index(request):
-    contributors = get_organizations_info(2023).json()
-    for key in contributors[0].keys():
-        print(key)
+    organizations = get_organizations_info(year=2023,filter='github')
+
     # print(contributers)
     return render(request, 'gsorcerer/index.html', {
-        'contributers': contributors
+        'organizations': organizations
     })
