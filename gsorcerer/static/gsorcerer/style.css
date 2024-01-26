@@ -1,0 +1,38 @@
+:root {
+    --primary: #264653;
+    --secondary: #2A9D8F;
+    --tertiary: #E9C46A;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    color: var(--tertiary);
+    background-color: var(--primary);
+}
+
+.btn-outline-success {
+    color: var(--tertiary);
+    border-color: var(--tertiary);
+}
+.btn-outline-success:hover {
+    color: var(--primary);
+    background-color: var(--tertiary);
+    border-color: var(--tertiary);
+}
+
+.sub-text {
+    color: var(--secondary);
+}
+.form-control {
+    width: 80%;
+    background-color: var(--primary);
+    color: var(--tertiary);
+    border-color: var(--tertiary);
+}
+.form-control:focus {
+    background-color: var(--primary);
+    color: var(--tertiary);
+    border-color: var(--tertiary);
+    box-shadow: 0 0 0 0.2rem rgba(233, 196, 106, 0.25);
+}
