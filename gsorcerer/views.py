@@ -20,7 +20,7 @@ from datetime import datetime
 # ideas_link
 # direct_comm_methods
 # social_comm_methods
-
+# github token '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'
 def index(request):
     organizations = Organization.objects.all()    
                 
