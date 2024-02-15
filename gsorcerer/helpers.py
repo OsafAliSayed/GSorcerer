@@ -1,5 +1,7 @@
 import requests
 import re
+from github import Github
+
 def github_re_filter(organization):
   expressions = [r'https://github.com/[a-zA-Z0-9]*']
   for exp in expressions:
@@ -10,6 +12,9 @@ def github_re_filter(organization):
   return False
 
 def get_organizations_info(year, filter=None):
+  """
+  Get all organizations info from Google Summer of Code API
+  """
   url = f'https://summerofcode.withgoogle.com/api/program/{year}/organizations/'
 
   payload = {}
@@ -39,4 +44,19 @@ def get_organizations_info(year, filter=None):
           organization["source_code"] = github_re_filter(organization["source_code"])
           data.append(organization)
     return data
-      
+
+def get_issues_from_github(access_token, owner, repo_name, labels=None):
+  access_token = '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'
+  g = Github(access_token)
+
+  # Replace 'owner' and 'repo' with the desired repository details
+  owner = 'wagtail'
+  repo_name = 'wagtail'
+  repo = g.get_repo(f'{owner}/{repo_name}')
+
+  # Get all open issues
+  if labels:
+    issues = repo.get_issues(state='open', labels=labels)
+  else:
+    issues = repo.get_issues(state='open')
+  return issues
