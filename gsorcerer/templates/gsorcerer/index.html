@@ -6,7 +6,7 @@ Home
 
 {% block body %}
 <!-- Title -->
-<div class="row d-flex flex-column justify-content-center align-items-center h-100">
+<div class="row d-flex flex-column justify-content-center align-items-center">
     <div class="col-12">
         <h1 class="text-center">Welcome to Gsorcerer</h1>
     </div>
@@ -21,17 +21,17 @@ Home
             <input class="form-control  mr-sm-2 w-80" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
-    </div>
-    <!-- {% for organization in organizations %}
-
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ organization.logo_url }}" alt="Card image cap">
+    </div>    
+</div>
+<div class="row justify-content-center">
+    {% for organization in organizations %}
+    <div class="col-3 m-2 card">
+        <img src="{{ organization.logo_url }}" class="card-img-top" alt="Organization Logo">
         <div class="card-body">
-          <h5 class="card-title">{{organization.name}}</h5>
-          <p class="card-text">{{organization.description}}</p>
-          <a href="{{organization.source_code}}" class="btn btn-primary">Source Code</a>
+            <h5 class="card-title">{{ organization.name }}</h5>
+            <p class="card-text">{{ organization.tagline }}</p>
         </div>
     </div>
-    {% endfor %} -->
+    {% endfor %}
 </div>
 {% endblock %}
