@@ -3,7 +3,7 @@ import re
 from github import Github
 
 def github_re_filter(organization):
-  expressions = [r'https://github.com/[a-zA-Z0-9]*']
+  expressions = [r'https://github.com/[a-zA-Z0-9-]*']
   for exp in expressions:
     regex = re.compile(exp)
     result = regex.search(organization)
