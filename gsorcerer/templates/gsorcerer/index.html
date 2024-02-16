@@ -23,12 +23,12 @@ Home
           </form>
     </div>    
 </div>
-<div class="row justify-content-center">
+<div class="row m-3 justify-content-center">
     {% for organization in organizations %}
-    <div class="col-3 m-2 card">
+    <div class="col-3 m-3 card">
         <img src="{{ organization.logo_url }}" class="card-img-top" alt="Organization Logo">
         <div class="card-body">
-            <h5 class="card-title">{{ organization.slug }}</h5>
+            <h5 class="card-title">{{ organization.name }}</h5>
             <p class="card-text">{{ organization.tagline }}</p>
             <div class="card-btns">
                 <a class="btn btn-outline-success my-2 my-sm-0" href="{{ organization.source_code }}">Repo</a>
