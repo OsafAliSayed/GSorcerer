@@ -34,7 +34,8 @@ def organization(request, org_slug):
     return render(request, 'gsorcerer/organization.html', {
         'organization': organization
     })
-    
+
+# used to get data from GSoC API and update the database
 def update_db():
     data = get_organizations_info("2023", "github")
     for org in data:

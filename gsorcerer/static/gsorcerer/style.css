@@ -44,11 +44,11 @@ html, body {
     color: var(--tertiary);
     height: inherit;
     padding: 20px;
-    transition: border 0.1s ease-in-out, transform 0.1s ease-in-out;
+    border: 3px solid transparent;
+    transition: border-image 0.1s ease-in-out;
 }
 
 .card:hover {
-    border: 3px solid transparent;
     border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
     border-image-slice: 1;
     transform: scale(1.05);
@@ -73,4 +73,26 @@ html, body {
 
 .card-btns > * {
     margin-right: 1rem;
+}
+
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+    color: var(--tertiary);
+    border: 3px solid transparent;
+    transition: all 0.1s ease-in-out;
+}
+
+.card-header-animate:hover {
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+}
+
+.issue {
+    background-color: var(--primary);
+}
+
+.issue > * {
+    margin-bottom: 1rem;
 }
