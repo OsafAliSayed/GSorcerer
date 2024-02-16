@@ -1,4 +1,5 @@
 :root {
+    /* --primary: grey; */
     --primary: #264653;
     --secondary: #2A9D8F;
     --tertiary: #E9C46A;
@@ -41,18 +42,29 @@ html, body {
     background-color: var(--primary);
     color: var(--secondary);
     border-color: var(--secondary);
-    height: 400px;
+    height: inherit;
     padding: 20px;
 }
 
 .card-img-top {
     width: 100%;
-    height: 15vw;
+    height: 20vw;
     object-fit: contain;
     mix-blend-mode: multiply;
 }
 
-img {
-    /* remove white backgrounds from img */
+.card-body {
+    width: 100%;
+    height: 15vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.card-btns {
+    display: flex;
+}
+
+.card-btns > * {
+    margin-right: 1rem;
 }

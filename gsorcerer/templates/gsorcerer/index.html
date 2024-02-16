@@ -28,8 +28,12 @@ Home
     <div class="col-3 m-2 card">
         <img src="{{ organization.logo_url }}" class="card-img-top" alt="Organization Logo">
         <div class="card-body">
-            <h5 class="card-title">{{ organization.name }}</h5>
+            <h5 class="card-title">{{ organization.slug }}</h5>
             <p class="card-text">{{ organization.tagline }}</p>
+            <div class="card-btns">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{{ organization.source_code }}">Repo</a>
+                <a class="btn btn-outline-success my-2 my-sm-0" href="{% url 'organization' organization.slug %}">Check Open Issues</a>
+            </div>
         </div>
     </div>
     {% endfor %}
