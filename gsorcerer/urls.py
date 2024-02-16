@@ -5,4 +5,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('organization/<str:org_slug>' , views.organization, name='organization'),
 ]
