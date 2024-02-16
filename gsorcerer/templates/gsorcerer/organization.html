@@ -6,5 +6,35 @@
 
 {% block body %}
 <!-- Title -->
-<h1>{{ organization.name }}</h1>
+<div class="row m-5 card-header card-header-animate">
+    <div class="col-4 d-flex justify-content-center align-items-center">
+        <img src="{{ organization.logo_url }}" class="card-img-top" alt="Organization Logo">
+    </div>
+    <div class="col-8 p-5">
+        <div class="org-title">
+            <h3>{{ organization.name }} ({{ organization.tagline }})</h3>
+            <p>{{ organization.description }}</p>
+        </div>
+    </div>
+</div>
+<div class="row m-5 p-5 card-header">
+    <div class="col-12">
+        <form class="d-flex w-100">
+            <input class="form-control  mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="col-12 issues mt-4">
+        <div class="issue px-5 py-3">
+            <h5>Issue Title</h5>
+            <p>Issue Description</p>
+            <div class="issue-tags">
+                <span class="badge badge-pill badge-dark px-3 py-2">Python</span>
+                <span class="badge badge-pill badge-dark px-3 py-2">Django</span>
+                <span class="badge badge-pill badge-dark px-3 py-2">Backend</span>
+            </div>
+            <a class="btn btn-outline-success my-2 my-sm-0" href="#">View Issue</a>
+        </div>
+    </div>
+</div>
 {% endblock %}
