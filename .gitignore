@@ -3,3 +3,4 @@ venv/
 ./db.sqlite3
 
 app/settings.py
+gsorcerer/__pycache__/
