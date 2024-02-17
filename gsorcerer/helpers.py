@@ -60,3 +60,16 @@ def get_issues_from_github(access_token, owner, repo_name, labels=None):
   else:
     issues = repo.get_issues(state='open')
   return issues
+
+
+def fetch_open_issues(token, username):
+    g = Github(token)
+    open_issues = []
+
+    user = g.get_user(username)
+    for repo in user.get_repos():
+        issues = repo.get_issues(state='open')
+        for issue in issues:
+            open_issues.append(issue)
+
+    return open_issues
