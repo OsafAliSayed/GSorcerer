@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from .helpers import get_organizations_info
+from .helpers import get_organizations_info, fetch_open_issues
 from .models import Organization, Categories, TechnologyTags, TopicTags
 from datetime import datetime
+from .local_settings import GIT_TOKEN
 # Create your views here.
 
 # name
@@ -30,9 +31,10 @@ def index(request):
     
 def organization(request, org_slug):
     organization = Organization.objects.get(slug=org_slug)
-    print(organization)
+    issues = fetch_open_issues(GIT_TOKEN, org_slug)
     return render(request, 'gsorcerer/organization.html', {
-        'organization': organization
+        'organization': organization,
+        'issues': issues,
     })
 
 # used to get data from GSoC API and update the database
