@@ -1,6 +1,7 @@
 import requests
 import re
 from github import Github
+from operator import attrgetter
 
 def github_re_filter(organization):
   expressions = [r'https://github.com/[a-zA-Z0-9-]*']
@@ -67,9 +68,18 @@ def fetch_open_issues(token, username):
     open_issues = []
 
     user = g.get_user(username)
-    for repo in user.get_repos():
-        issues = repo.get_issues(state='open')
+    repo_count = 0
+    repos = sorted(user.get_repos(), key=attrgetter('stargazers_count'), reverse=True)
+    for repo in repos:
+        if repo_count == 5:
+            break
+        issues = repo.get_issues(state='open', labels=['good first issue'])
+        issues_count = 0
         for issue in issues:
+            if issues_count == 5:
+                break
             open_issues.append(issue)
+            issues_count += 1
+        repo_count += 1
 
     return open_issues
