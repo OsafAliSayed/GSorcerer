@@ -5,4 +5,4 @@ venv/
 app/settings.py
 gsorcerer/__pycache__/
 
-local_settings.py
+gsorcerer/local_settings.py
