@@ -1,5 +1,5 @@
 {% extends "gsorcerer/layout.html" %}
-
+{% load static %}
 {% block title %}
 Home
 {% endblock %}
@@ -18,14 +18,13 @@ Home
     </div>
     <div class="col-6">
         <form class=" d-flex justify-content-center">
-            <input class="form-control  mr-sm-2 w-100" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control  mr-sm-2 w-100" id="search" type="search" placeholder="Enter Organization name to Search" aria-label="Search">
         </form>
     </div>    
 </div>
 <div class="row m-3 justify-content-center">
     {% for organization in organizations %}
-    <div class="col-3 m-3 card">
+    <div class="col-3 m-3 card cards">
         <img src="{{ organization.logo_url }}" class="card-img-top" alt="Organization Logo">
         <div class="card-body">
             <h5 class="card-title">{{ organization.name }}</h5>
@@ -38,4 +37,8 @@ Home
     </div>
     {% endfor %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'gsorcerer/index.js'%}"></script>
 {% endblock %}
